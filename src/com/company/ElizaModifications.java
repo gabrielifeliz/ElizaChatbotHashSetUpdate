@@ -24,25 +24,15 @@ public class ElizaModifications {
         return newSentence;
     }
 
-    public String hedgeDisplay(Random random, HashSet<String> hedges) {
+    /* This method is responsible for generating a random qualifier */
+    public String hedgeOrQualifierDisplay(Random random, HashSet<String> hashSet) {
 
-        Iterator iteratorHedges = hedges.iterator();
-        int hedgeId =  random.nextInt(hedges.size());
-        String hedge = iteratorHedges.next().toString();
-        for (int count = 0; count < hedgeId; count++)
-            hedge = iteratorHedges.next().toString();
+        Iterator iteratorHashSet = hashSet.iterator();
+        int hasSetId =  random.nextInt(hashSet.size());
+        String response = iteratorHashSet.next().toString();
+        for (int count = 0; count < hasSetId; count++)
+            response = iteratorHashSet.next().toString();
 
-        return hedge;
-    }
-
-    public String qualifierDisplay(Random random, HashSet<String> qualifiers) {
-
-        Iterator iteratorQualifiers = qualifiers.iterator();
-        int qualifierId =  random.nextInt(qualifiers.size());
-        String qualifier = iteratorQualifiers.next().toString();
-        for (int count = 0; count < qualifierId; count++)
-            qualifier = iteratorQualifiers.next().toString();
-
-        return qualifier;
+        return response;
     }
 }

@@ -7,6 +7,7 @@ public class ElizaChatbot {
     public static void main(String[] args) {
 
         // Create Random and Scanner objects
+        // Also, create ElizaModifications objects to use methods inside it
         Scanner keyboard = new Scanner(System.in);
         Random random = new Random();
         ElizaModifications modifications = new ElizaModifications();
@@ -26,8 +27,6 @@ public class ElizaChatbot {
         hedges.add("Please tell me more.");
         hedges.add("Many of my patients tell me the same thing.");
 
-        String hedge = modifications.hedgeDisplay(random, hedges);
-
         // Prompt the user to enter his or her problem and get the response
         System.out.print("Good day. What is your problem? Enter your response here or Q to quit: ");
         answer = keyboard.nextLine();
@@ -46,11 +45,11 @@ public class ElizaChatbot {
                 qualifiers.add("You seem to think that " + secondPersonSentence + ".");
                 qualifiers.add("So, you are concerned that " + secondPersonSentence + ".");
 
-                String qualifier = modifications.qualifierDisplay(random, qualifiers);
-
                 // Display Eliza's response to the user randomly
                 System.out.print(
-                        (random.nextBoolean() ? (hedge) : (qualifier))
+                        (random.nextBoolean()
+                                ? (modifications.hedgeOrQualifierDisplay(random, hedges))
+                                : (modifications.hedgeOrQualifierDisplay(random, qualifiers)))
                                 + " Enter your response here or Q to quit: ");
                 answer = keyboard.nextLine();
             } else {
@@ -62,6 +61,7 @@ public class ElizaChatbot {
             loopCount++;
         }
 
+        // Close Scanner object
         keyboard.close();
     }
 }
